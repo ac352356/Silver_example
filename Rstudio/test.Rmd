@@ -1,0 +1,53 @@
+---
+title: "test"
+author: "黃佩新"
+date: "2019/7/10"
+output: html_document
+---
+
+[RMarkdown](https://ac352356.github.io/Silver_example/Rstudio/hi.html)
+<https://ac352356.github.io/Silver_example/Rstudio/hi.html>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+如果年資<10年津貼加1000
+
+如果年資介於10年~20年津貼加1500
+
+如果年資介於20年~30年津貼加2000
+
+如果年資>10年津貼加3000
+
+
+```{r echo = TRUE}
+years = sample(5:35,10)
+salary = sample(28000:38000,10)
+film = data.frame(years,salary)
+adj_salary = ifelse(years>=30,salary+3000,ifelse(years>=20,salary+2000,                                                 ifelse(years<=10,salary+1000,salary+1500)))
+film = cbind(film,adj_salary)
+film
+```
+
+
+if 條件句可以用在向量上
+
+
+```{r echo = TRUE}
+f = function(x) {
+if (x > 10) {
+b = 0
+} else {
+b = 1
+}
+}
+
+a = matrix(1:15,ncol=1)
+apply(a,1,f)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
